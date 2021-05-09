@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title%}
+    Home Page
+{% endblock %}
+
+{% block content%}
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Container ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in docker_services %}
+                <tr>
+                    <td>{{ service.containerId }}</td>
+                    <td>{{ service.names }}</td>
+                    <td>{{ service.status }}</td>
+                    <td>
+                        <button class="btn btn-outline btn-success">Start</button>
+                        <button class="btn btn-outline btn-danger">Stop</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
